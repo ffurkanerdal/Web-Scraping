@@ -37,22 +37,13 @@ class PullData:
         return soup
 
     def run(self):
-
-        def pull_price():
-            price_list = [i.text for i in self.__get_soup.find_all('div', class_='showcase-price')]
-            return price_list
-
-        def pull_brand():
-            brand_list = [i.text for i in self.__get_soup.find_all('div', class_='showcase-brand')]
-            return brand_list
+        price_list = [i.text for i in self.__get_soup.find_all('div', class_='showcase-price')]
+            
+        brand_list = [i.text for i in self.__get_soup.find_all('div', class_='showcase-brand')]
         
-        def pull_title():
-            title_list = [i.text for i in self.__get_soup.find_all('div', class_='showcase-title')]
-            return title_list
-
-        def pull_image():
-            image_list = [i['data-src'] for i in self.__get_soup.find_all('img',class_='lazyload')]
-            return image_list
-
-        return pull_price(), pull_brand(),pull_title(),pull_image()
+        title_list = [i.text for i in self.__get_soup.find_all('div', class_='showcase-title')]
+        
+        image_list = [i['data-src'] for i in self.__get_soup.find_all('img',class_='lazyload')]
+        
+        return price_list, brand_list, title_list, image_list
     
